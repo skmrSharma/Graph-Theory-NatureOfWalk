@@ -1,7 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
+
 #define FALSE 0
 #define TRUE 1
+
 short int visited[10];
 char nodes[10]={'A','B','C','D','E','F','G','H','I','J'};
 /*int** make2DArray(int rows,int cols)
@@ -52,12 +55,38 @@ void printMatrix(int g[][7],int n)
 	}
 }
 
-main()
+int checkvalidity(char seq[])
+{
+	int i,j;
+	int exists = 0;
+
+	for(i=0;i<strlen(seq);i++)
+		seq[i] = seq[i] - 32;
+ 
+	for(i=0;i<strlen(seq);i++){
+		exists = 0;
+		for(j=0;j<strlen(nodes);j++)
+			if(seq[i] == nodes[j]){
+				exists = 1;
+				break;
+			}
+	if(exists == 0)
+		return 0;
+	}
+
+	return 1;
+
+
+
+
+}
+
+int main()
 {
 	// int n;
 	// printf("Enter the number of vertices in the graph:");
 	// scanf("%d",&n);
-	char s[30];
+	char seq[30];
 	int g[7][7]={{0,1,1,0,0,0,0},
 		{1,0,1,0,1,0,0},
 		{1,1,0,1,0,0,0},
@@ -65,11 +94,19 @@ main()
 		{0,1,0,1,0,1,1},
 		{0,0,0,0,1,0,1},
 		{0,0,0,0,1,1,0}};
-	printf("Enter the sequence:");
-	scanf("%s",seq);
+	
 	printMatrix(g,7);
 	printf("The adjacent nodes are\n");
 	printAdjNodes(g,7);
-	// printf("The dfs traversal:\n");
+	printf("The dfs traversal:\n");
 	DFS(g,7);
+	printf("Enter the sequence:");
+	scanf("%s",seq);
+	if(checkvalidity(seq))
+		printf("\nThe given sequence is valid\n");
+	else
+		printf("\nThe given sequence is invalid\n");
+
+	return 0;
+
 }
