@@ -12,7 +12,7 @@ int** make2DArray(int rows,int cols)
 		g[i]=(int*)malloc(cols*sizeof(int));
 	return g;
 }
-void dfs(int **g,int i,int n)
+void dfs(int g[][7],int i,int n)
 {
 	visited[i]=TRUE;
 	printf("%c\n",nodes[i]);	// to print all nodes in dfs order
@@ -20,7 +20,7 @@ void dfs(int **g,int i,int n)
 		if(g[i][j]==1 && visited[j]==FALSE)
 			dfs(g,j,n);
 }
-void DFS(int **g,int n)
+void DFS(int g[][7],int n)
 {
 	int comp=0;
 	for(int i=0;i<n;i++)
@@ -34,7 +34,7 @@ void DFS(int **g,int n)
 			dfs(g,i,n);
 		}
 }
-void printAdjNodes(int **g,int n)
+void printAdjNodes(int g[][7],int n)
 {
 	for(int i=0;i<n;i++)
 		for(int j=0;j<n;j++)
@@ -52,23 +52,24 @@ void printMatrix(int g[][7],int n)
 	}
 }
 
-void main()
+main()
 {
-	int n;
+	// int n;
 	// printf("Enter the number of vertices in the graph:");
 	// scanf("%d",&n);
-	
+	char s[30];
 	int g[7][7]={{0,1,1,0,0,0,0},
 		{1,0,1,0,1,0,0},
 		{1,1,0,1,0,0,0},
 		{0,0,1,0,1,0,0},
-		{0,1,0,1,0,0,0},
+		{0,1,0,1,0,1,1},
 		{0,0,0,0,1,0,1},
 		{0,0,0,0,1,1,0}};
-	
+	printf("Enter the sequence:");
+	scanf("%s",seq);
 	printMatrix(g,7);
-	// printf("The adjacent nodes are\n");
-	// printAdjNodes(g,n);
+	printf("The adjacent nodes are\n");
+	printAdjNodes(g,7);
 	// printf("The dfs traversal:\n");
-	// DFS(g,n);
+	DFS(g,7);
 }
