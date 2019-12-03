@@ -6,7 +6,7 @@
 #define TRUE 1
 
 short int visited[10];
-char nodes[10]={'M','N','O','P','Q','R','S','T','U','V'};
+char nodes[10];
 int** make2DArray(int rows,int cols)
 {
 	int **g;
@@ -30,10 +30,6 @@ int checkvalidity(char seq[],int **graph)
 {
 	int i,j;
 	int exists = 0;
-
-	for(i=0;i<strlen(seq);i++)
-		seq[i] = seq[i] - 32;
- 
 	for(i=0;i<strlen(seq);i++){
 		exists = 0;
 		for(j=0;j<strlen(nodes);j++)
@@ -149,6 +145,21 @@ void natureOfWalk(char seq[])
 
 	}
 }
+void createAdjMatrix(int **g,int n)
+{
+	char av;
+	for(int i=0;i<n;i++)
+	{
+		printf("Enter the vertices adjacent to vertex %c\nEnter (.) to go to next vertex:",nodes[i]);
+		for(;;)
+		{
+			scanf("%c",&av);
+			if(av=='.')
+				break;
+			g[i][av-nodes[0]]=1;
+		}
+	}
+}
 
 int main()
 {
@@ -166,11 +177,14 @@ int main()
 	printf("Enter the number of vertices in the graph:");
 	scanf("%d",&n);
 	g=make2DArray(n,n);
-	printf("Enter the adjacency matrix:");
+	printf("Enter the vertices in sorted order:");
+	scanf("%s",nodes);
+	createAdjMatrix(g,n);
+	/*printf("Enter the adjacency matrix:");
 	for(int i=0;i<n;i++)
 		for(int j=0;j<n;j++)
-			scanf("%d",&g[i][j]);
-	printMatrix(g,7);
+			scanf("%d",&g[i][j]);*/
+	printMatrix(g,n);
 	printf("Enter the sequence:");
 	scanf("%s",seq);
 	if(checkvalidity(seq,g))
