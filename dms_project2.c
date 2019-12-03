@@ -91,12 +91,12 @@ int vertexRepeat(char seq[])
 {
 	int i;
 	int count[10] = {0};
-	for(i=0;i<strlen(seq);i++)
-	{
-		if(seq[0] == seq[strlen(seq)-1])
-			continue;
-		count[seq[i] - nodes[0]]++;
-	}
+	if(seq[0] == seq[strlen(seq)-1])
+		for(i=1;i<strlen(seq);i++)
+			count[seq[i] - nodes[0]]++;
+	else
+		for(i=0;i<strlen(seq);i++)
+			count[seq[i] - nodes[0]]++;
 	for(i=0;i<10;i++)
 	{
 		//printf("%d",count[i]);
