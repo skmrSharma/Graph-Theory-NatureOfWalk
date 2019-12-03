@@ -4,14 +4,14 @@
 #define TRUE 1
 short int visited[10];
 char nodes[10]={'A','B','C','D','E','F','G','H','I','J'};
-int** make2DArray(int rows,int cols)
+/*int** make2DArray(int rows,int cols)
 {
 	int **g;
 	g=(int **)malloc(rows*sizeof(int*));
 	for(int i=0;i<rows;i++)
 		g[i]=(int*)malloc(cols*sizeof(int));
 	return g;
-}
+}*/
 void dfs(int g[][7],int i,int n)
 {
 	visited[i]=TRUE;
