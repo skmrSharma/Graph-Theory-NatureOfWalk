@@ -41,7 +41,7 @@ void printAdjNodes(int **g,int n)
 			if(g[i][j] == 1)
 				printf("%c is adjacent to %c\n",nodes[j],nodes[i]);
 }
-void printMatrix(int **g,int n)
+void printMatrix(int g[][7],int n)
 {
 	printf("The adjacency matrix is\n");
 	for(int i=0;i<n;i++)
@@ -51,8 +51,13 @@ void printMatrix(int **g,int n)
 		printf("\n");
 	}
 }
-int[][7] theGraph()
+
+void main()
 {
+	int n;
+	// printf("Enter the number of vertices in the graph:");
+	// scanf("%d",&n);
+	
 	int g[7][7]={{0,1,1,0,0,0,0},
 		{1,0,1,0,1,0,0},
 		{1,1,0,1,0,0,0},
@@ -60,24 +65,10 @@ int[][7] theGraph()
 		{0,1,0,1,0,0,0},
 		{0,0,0,0,1,0,1},
 		{0,0,0,0,1,1,0}};
-	return g;
-}
 	
-main()
-{
-	int **g;
-	int n;
-	printf("Enter the number of vertices in the graph:");
-	scanf("%d",&n);
-	// g=make2DArray(n,n);
-	/* printf("Enter the binary values for the adjacency matrix:");
-	for(int i=0;i<n;i++)
-		for(int j=0;j<n;j++)
-			scanf("%d",&g[i][j]);*/
-	g=theGraph();
-	printMatrix(g,n);
-	printf("The adjacent nodes are\n");
-	printAdjNodes(g,n);
-	printf("The dfs traversal:\n");
-	DFS(g,n);
+	printMatrix(g,7);
+	// printf("The adjacent nodes are\n");
+	// printAdjNodes(g,n);
+	// printf("The dfs traversal:\n");
+	// DFS(g,n);
 }
