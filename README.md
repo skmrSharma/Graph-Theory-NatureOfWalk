@@ -1,5 +1,3 @@
-# graph_theory_dms
-our little project...
 # To indicate the nature of walk
 + Only **Trail** : edges do not repeat but vertices should repeat
 + Only **Open Walk** : both edges and vertices must repeat
