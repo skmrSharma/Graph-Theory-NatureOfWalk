@@ -8,6 +8,6 @@
 ## Inputs
 + Number of nodes in the graph should not be greater than 10
 + The walk whose type is to be determined must be given as a sequence of vertices
-+ An example input is provided in the file - graph_input2
++ An example input is provided in the file - graph_input3
 
 ## Output would be one of the above
